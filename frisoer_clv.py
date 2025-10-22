@@ -32,8 +32,11 @@ with col4:
 
 d_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=7, step=1)
 
-d_clv = ((d_clip + d_color * (d_color_share / 100) + d_stripe * (d_stripe_share / 100) + d_prod) 
-         * d_visits * d_years) * (d_close / 10) * d_new_customers
+# Udregning af værdier
+d_avg_visit = d_clip + (d_color * (d_color_share / 100)) + (d_stripe * (d_stripe_share / 100)) + d_prod
+d_loyal = (d_close / 10) * d_new_customers
+d_one_time = d_new_customers - d_loyal
+d_clv = (d_loyal * d_avg_visit * d_visits * d_years) + (d_one_time * d_avg_visit)
 
 st.metric("💇‍♀️ Samlet livstidsværdi – Damekunder", f"{d_clv:,.0f} kr.".replace(",", "."))
 
@@ -55,7 +58,10 @@ with col6:
 
 m_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=6, step=1)
 
-m_clv = ((m_clip + m_prod) * m_visits * m_years) * (m_close / 10) * m_new_customers
+m_avg_visit = m_clip + m_prod
+m_loyal = (m_close / 10) * m_new_customers
+m_one_time = m_new_customers - m_loyal
+m_clv = (m_loyal * m_avg_visit * m_visits * m_years) + (m_one_time * m_avg_visit)
 
 st.metric("💇‍♂️ Samlet livstidsværdi – Herrekunder", f"{m_clv:,.0f} kr.".replace(",", "."))
 
@@ -77,7 +83,10 @@ with col8:
 
 b_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=5, step=1)
 
-b_clv = ((b_clip + b_prod) * b_visits * b_years) * (b_close / 10) * b_new_customers
+b_avg_visit = b_clip + b_prod
+b_loyal = (b_close / 10) * b_new_customers
+b_one_time = b_new_customers - b_loyal
+b_clv = (b_loyal * b_avg_visit * b_visits * b_years) + (b_one_time * b_avg_visit)
 
 st.metric("👶 Samlet livstidsværdi – Børnekunder", f"{b_clv:,.0f} kr.".replace(",", "."))
 
