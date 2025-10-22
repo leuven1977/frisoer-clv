@@ -3,67 +3,100 @@ import streamlit as st
 st.set_page_config(page_title="CLV-beregner for frisører", page_icon="💇‍♀️", layout="centered")
 
 st.title("💇‍♀️ CLV-beregner for frisører")
-st.write("Beregn hvor meget en gennemsnitlig kunde er værd for din salon – og se hvordan små ændringer påvirker din indtjening i realtid.")
+st.write("Beregn hvor meget dine kunder er værd for din salon – og se hvor meget ekstra du kan tjene med nye faste kunder.")
 
 st.divider()
+
+# ---------- Damekunder ----------
 st.header("👩 Damekunder")
 
-d_clip = st.number_input("Pris for dameklip (kr.)", 0, 5000, 600)
-d_color = st.number_input("Pris for farvning (kr.)", 0, 5000, 750)
-d_stripe = st.number_input("Pris for striber/highlights (kr.)", 0, 5000, 950)
-d_color_share = st.slider("Andel kunder der får farve (%)", 0, 100, 60)
-d_stripe_share = st.slider("Andel kunder der får striber (%)", 0, 100, 40)
-d_prod = st.number_input("Produktsalg pr. damebesøg (kr.)", 0, 2000, 100)
-d_visits = st.slider("Besøg pr. år (dame)", 1, 12, 6)
-d_years = st.slider("Antal år som kunde (dame)", 1, 10, 3)
-d_close = st.slider("Faste kunder ud af 10 nye (dame)", 0, 10, 7)
+d_new_customers = st.number_input("Antal nye kunder (kvinder)", min_value=0, value=5, step=1)
 
-d_service = d_clip + d_color*(d_color_share/100) + d_stripe*(d_stripe_share/100)
-d_clv = ((d_service + d_prod) * d_visits * d_years) * (d_close/10)
+d_clip = st.number_input("Pris for dameklip (kr.)", min_value=0, value=600, step=50)
+d_color = st.number_input("Pris for farvning (kr.)", min_value=0, value=750, step=50)
+d_stripe = st.number_input("Pris for striber/highlights (kr.)", min_value=0, value=950, step=50)
 
-st.metric("💇‍♀️ Damekunde – livstidsværdi", f"{d_clv:,.0f} kr.".replace(",", "."))
+col1, col2 = st.columns(2)
+with col1:
+    d_color_share = st.selectbox("Andel kunder der får farve (%)", [0, 20, 40, 60, 80, 100], index=3)
+with col2:
+    d_stripe_share = st.selectbox("Andel kunder der får striber (%)", [0, 20, 40, 60, 80, 100], index=2)
+
+d_prod = st.number_input("Produktsalg pr. damebesøg (kr.)", min_value=0, value=100, step=25)
+
+col3, col4 = st.columns(2)
+with col3:
+    d_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=2)
+with col4:
+    d_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2)
+
+d_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=7, step=1)
+
+d_clv = ((d_clip + d_color * (d_color_share / 100) + d_stripe * (d_stripe_share / 100) + d_prod) 
+         * d_visits * d_years) * (d_close / 10) * d_new_customers
+
+st.metric("💇‍♀️ Samlet livstidsværdi – Damekunder", f"{d_clv:,.0f} kr.".replace(",", "."))
 
 st.divider()
+
+# ---------- Herrekunder ----------
 st.header("👨 Herrekunder")
 
-m_clip = st.number_input("Pris for herreklip (kr.)", 0, 5000, 400)
-m_prod = st.number_input("Produktsalg pr. herrebesøg (kr.)", 0, 2000, 50)
-m_visits = st.slider("Besøg pr. år (herre)", 1, 12, 8)
-m_years = st.slider("Antal år som kunde (herre)", 1, 10, 3)
-m_close = st.slider("Faste kunder ud af 10 nye (herre)", 0, 10, 6)
+m_new_customers = st.number_input("Antal nye kunder (mænd)", min_value=0, value=5, step=1)
 
-m_service = m_clip
-m_clv = ((m_service + m_prod) * m_visits * m_years) * (m_close/10)
+m_clip = st.number_input("Pris for herreklip (kr.)", min_value=0, value=400, step=25)
+m_prod = st.number_input("Produktsalg pr. herrebesøg (kr.)", min_value=0, value=50, step=10)
 
-st.metric("💇‍♂️ Herrekunde – livstidsværdi", f"{m_clv:,.0f} kr.".replace(",", "."))
+col5, col6 = st.columns(2)
+with col5:
+    m_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=3)
+with col6:
+    m_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2)
+
+m_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=6, step=1)
+
+m_clv = ((m_clip + m_prod) * m_visits * m_years) * (m_close / 10) * m_new_customers
+
+st.metric("💇‍♂️ Samlet livstidsværdi – Herrekunder", f"{m_clv:,.0f} kr.".replace(",", "."))
 
 st.divider()
+
+# ---------- Børnekunder ----------
 st.header("👶 Børnekunder")
 
-b_clip = st.number_input("Pris for børneklip (kr.)", 0, 5000, 300)
-b_prod = st.number_input("Produktsalg pr. børnebesøg (kr.)", 0, 2000, 0)
-b_visits = st.slider("Besøg pr. år (børn)", 1, 12, 2)
-b_years = st.slider("Antal år som kunde (børn)", 1, 10, 2)
-b_close = st.slider("Faste kunder ud af 10 nye (børn)", 0, 10, 5)
+b_new_customers = st.number_input("Antal nye kunder (børn)", min_value=0, value=5, step=1)
 
-b_service = b_clip
-b_clv = ((b_service + b_prod) * b_visits * b_years) * (b_close/10)
+b_clip = st.number_input("Pris for børneklip (kr.)", min_value=0, value=300, step=25)
+b_prod = st.number_input("Produktsalg pr. børnebesøg (kr.)", min_value=0, value=0, step=10)
 
-st.metric("👶 Børnekunde – livstidsværdi", f"{b_clv:,.0f} kr.".replace(",", "."))
+col7, col8 = st.columns(2)
+with col7:
+    b_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=1)
+with col8:
+    b_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=1)
 
-avg = round((d_clv + m_clv + b_clv) / 3)
+b_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=5, step=1)
+
+b_clv = ((b_clip + b_prod) * b_visits * b_years) * (b_close / 10) * b_new_customers
+
+st.metric("👶 Samlet livstidsværdi – Børnekunder", f"{b_clv:,.0f} kr.".replace(",", "."))
+
+# ---------- Total ----------
+total_clv = d_clv + m_clv + b_clv
+st.divider()
+st.subheader("📊 Samlet livstidsværdi for nye kunder")
+st.metric("Samlet potentiel værdi", f"{total_clv:,.0f} kr.".replace(",", "."))
 
 st.divider()
-st.subheader("📊 Gennemsnitlig kundeværdi")
-st.metric("Gennemsnitlig livstidsværdi", f"{avg:,.0f} kr.".replace(",", "."))
-
-st.caption("Beregningen tager højde for priser, produktsalg, besøg, kundevarighed og din lukkerate (faste kunder ud af 10 nye).")
+st.write("💡 *Se hvor meget ekstra du kan tjene ved blot få nye faste kunder.*")
 
 st.markdown("""
 ---
-### Ønsker du flere kunder – uden bureaukaos?
-Jeg er uvildig rådgiver med 16+ års erfaring og hjælper selvstændige med at skabe vækst gennem klarhed og kontrol.
+### Ønsker du at forstå, hvor dine marketingkroner gør mest gavn?
+Jeg hjælper frisører med at skabe klarhed i samarbejdet med bureauer og få mere ud af deres eksisterende marketing.
 
-👉 [Besøg min LinkedIn](https://www.linkedin.com/)  
-👉 [Book gratis møde på Klary.dk](https://www.klary.dk)
+👉 [Book et gratis, uforpligtende møde på Klary.dk](https://www.klary.dk)  
+🔗 [Se min LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)  
+📞 Ring direkte: **28 10 96 68**
+---
 """)
