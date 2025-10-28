@@ -119,13 +119,15 @@ if st.button("Beregn livstidsværdi"):
 
 # --- CTA Section ---
 st.markdown("---")
-st.subheader("Ønsker du flere loyale kunder – uden at miste overblikket?")
+st.subheader("Ønsker du flere kunder?")
 st.markdown("""
-Denne beregner er skabt for at hjælpe frisører med at forstå, **hvor vigtig en enkelt kunde egentlig er** – og hvorfor løbende nye kunder er nøglen til vækst.
+Vil du vide, **hvor meget dine kunder faktisk er værd?**
 
-Jeg hjælper frisører, som ofte har mistet tilliden til deres bureau, med at skabe en **forretning med klarhed, frihed og en ordentlig løn**.
+Denne beregner viser, hvorfor **løbende nye kunder er forskellen på vækst og stilstand.**  
 
-Med 16 års erfaring i marketing og som tidligere partner i en frisørsalon, hjælper jeg dig med at få **ro i maven og styr på din salon**.
+Jeg hjælper **selvstændige frisører med at skabe vækst** – **uden at miste friheden eller glæden ved faget.**  
+
+Med **16 års erfaring fra marketing** og som **tidligere partner i en frisørsalon**, får du en sparringspartner, der forstår din hverdag og ved, hvordan du får **styr på både kunder, strategi og bundlinje.**
 
 👉 [**Book 20 min. gratis sparring**](https://www.klary.dk)  
 🔗 [**Besøg min LinkedIn-profil**](https://www.linkedin.com/in/michael-christensen-dk/)  
@@ -146,4 +148,5 @@ st.markdown("""
   <a href="tel:+4528109668">📞 Ring nu</a>
 </div>
 """, unsafe_allow_html=True)
+
 
