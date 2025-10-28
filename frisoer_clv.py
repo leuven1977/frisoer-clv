@@ -1,111 +1,148 @@
 import streamlit as st
 
-st.set_page_config(page_title="CLV-beregner for frisører", page_icon="💇‍♀️", layout="centered")
+st.set_page_config(page_title="Frisør – Kundens livstidsværdi", page_icon="💇‍♀️", layout="centered")
 
-st.title("💇‍♀️ CLV-beregner for frisører")
-st.write("Beregn hvor meget dine kunder er værd for din salon – og se hvor meget ekstra du kan tjene med nye faste kunder.")
-
-st.divider()
-
-# ---------- Damekunder ----------
-st.header("👩 Damekunder")
-
-d_new_customers = st.number_input("Antal nye kunder (kvinder)", min_value=0, value=5, step=1, key="d_new_customers")
-
-d_clip = st.number_input("Pris for dameklip (kr.)", min_value=0, value=600, step=50, key="d_clip")
-d_color = st.number_input("Pris for farvning (kr.)", min_value=0, value=750, step=50, key="d_color")
-d_stripe = st.number_input("Pris for striber/highlights (kr.)", min_value=0, value=950, step=50, key="d_stripe")
-
-col1, col2 = st.columns(2)
-with col1:
-    d_color_share = st.selectbox("Andel kunder der får farve (%)", [0, 20, 40, 60, 80, 100], index=3, key="d_color_share")
-with col2:
-    d_stripe_share = st.selectbox("Andel kunder der får striber (%)", [0, 20, 40, 60, 80, 100], index=2, key="d_stripe_share")
-
-d_prod = st.number_input("Produktsalg pr. damebesøg (kr.)", min_value=0, value=100, step=25, key="d_prod")
-
-col3, col4 = st.columns(2)
-with col3:
-    d_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=2, key="d_visits")
-with col4:
-    d_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2, key="d_years")
-
-d_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=7, step=1, key="d_close")
-
-# Udregning af værdier
-d_avg_visit = d_clip + (d_color * (d_color_share / 100)) + (d_stripe * (d_stripe_share / 100)) + d_prod
-d_loyal = (d_close / 10) * d_new_customers
-d_one_time = d_new_customers - d_loyal
-d_clv = (d_loyal * d_avg_visit * d_visits * d_years) + (d_one_time * d_avg_visit)
-
-st.metric("💇‍♀️ Samlet livstidsværdi – Damekunder", f"{d_clv:,.0f} kr.".replace(",", "."))
-
-st.divider()
-
-# ---------- Herrekunder ----------
-st.header("👨 Herrekunder")
-
-m_new_customers = st.number_input("Antal nye kunder (mænd)", min_value=0, value=5, step=1, key="m_new_customers")
-
-m_clip = st.number_input("Pris for herreklip (kr.)", min_value=0, value=400, step=25, key="m_clip")
-m_prod = st.number_input("Produktsalg pr. herrebesøg (kr.)", min_value=0, value=50, step=10, key="m_prod")
-
-col5, col6 = st.columns(2)
-with col5:
-    m_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=3, key="m_visits")
-with col6:
-    m_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2, key="m_years")
-
-m_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=6, step=1, key="m_close")
-
-m_avg_visit = m_clip + m_prod
-m_loyal = (m_close / 10) * m_new_customers
-m_one_time = m_new_customers - m_loyal
-m_clv = (m_loyal * m_avg_visit * m_visits * m_years) + (m_one_time * m_avg_visit)
-
-st.metric("💇‍♂️ Samlet livstidsværdi – Herrekunder", f"{m_clv:,.0f} kr.".replace(",", "."))
-
-st.divider()
-
-# ---------- Børnekunder ----------
-st.header("👶 Børnekunder")
-
-b_new_customers = st.number_input("Antal nye kunder (børn)", min_value=0, value=5, step=1, key="b_new_customers")
-
-b_clip = st.number_input("Pris for børneklip (kr.)", min_value=0, value=300, step=25, key="b_clip")
-b_prod = st.number_input("Produktsalg pr. børnebesøg (kr.)", min_value=0, value=0, step=10, key="b_prod")
-
-col7, col8 = st.columns(2)
-with col7:
-    b_visits = st.selectbox("Besøg pr. år", [1, 2, 4, 6, 8, 10, 12], index=1, key="b_visits")
-with col8:
-    b_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=1, key="b_years")
-
-b_close = st.number_input("Andel faste kunder ud af 10", min_value=0, max_value=10, value=5, step=1, key="b_close")
-
-b_avg_visit = b_clip + b_prod
-b_loyal = (b_close / 10) * b_new_customers
-b_one_time = b_new_customers - b_loyal
-b_clv = (b_loyal * b_avg_visit * b_visits * b_years) + (b_one_time * b_avg_visit)
-
-st.metric("👶 Samlet livstidsværdi – Børnekunder", f"{b_clv:,.0f} kr.".replace(",", "."))
-
-# ---------- Total ----------
-total_clv = d_clv + m_clv + b_clv
-st.divider()
-st.subheader("📊 Samlet livstidsværdi for nye kunder")
-st.metric("Samlet potentiel værdi", f"{total_clv:,.0f} kr.".replace(",", "."))
-
-st.divider()
-st.write("💡 *Se hvor meget ekstra du kan tjene ved blot få nye faste kunder.*")
-
+# --- Custom CSS ---
 st.markdown("""
----
-### Ønsker du at forstå, hvor dine marketingkroner gør mest gavn?
-Jeg hjælper frisører med at skabe klarhed i samarbejdet med bureauer og få mere ud af deres eksisterende marketing.
+<style>
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Inter', sans-serif;
+}
+h1, h2, h3 {
+    color: #5a2ca0;
+}
+.section {
+    background-color: #f8f8f8;
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+.result {
+    background-color: #d8c9f3;
+    color: #222;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+.sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5a2ca0;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 9999;
+}
+.sticky-cta a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+.sticky-cta a:hover {
+    background-color: #6b3ecf;
+}
+@media (min-width: 768px) {
+    .sticky-cta { display: none; }
+}
+</style>
+""", unsafe_allow_html=True)
 
-👉 [Book et gratis, uforpligtende møde på Klary.dk](https://www.klary.dk)  
-🔗 [Se min LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)  
-📞 Ring direkte: **28 10 96 68**
----
+# --- Top Section ---
+st.title("💇‍♀️ Hvad er en ny kunde egentlig værd for din salon?")
+st.markdown("""
+Mange bliver overraskede over, **hvor meget én kunde faktisk er værd** for deres salon over tid.  
+Denne beregner hjælper dig med at få indsigt i dine kunders **livstidsværdi (CLV)** – opdelt i dame-, herre- og børnekunder.
 """)
+
+# --- Function for calculation ---
+def calc_clv(price, product, visits, years, new_customers, conversion):
+    retained = new_customers * conversion / 100
+    total_first_visits = new_customers
+    total_revenue = (total_first_visits * (price + product)) + (retained * (price + product) * (visits - 1) * years)
+    return total_revenue
+
+# --- Input sections ---
+st.header("💰 Damekunder")
+with st.container():
+    d_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="d_new")
+    d_price = st.number_input("Gennemsnitlig pris pr. besøg (inkl. farve/klip)", min_value=0, value=650, step=50, key="d_price")
+    d_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=75, step=5, key="d_prod")
+    d_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits")
+    d_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=3, key="d_years")
+    d_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 50, key="d_conv")
+
+st.header("💇‍♂️ Herrekunder")
+with st.container():
+    m_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="m_new")
+    m_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=400, step=25, key="m_price")
+    m_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=50, step=5, key="m_prod")
+    m_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=3, key="m_visits")
+    m_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2, key="m_years")
+    m_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 60, key="m_conv")
+
+st.header("🧒 Børnekunder")
+with st.container():
+    b_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="b_new")
+    b_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=300, step=25, key="b_price")
+    b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=25, step=5, key="b_prod")
+    b_visits = st.selectbox("Besøg pr. år", [1, 2, 3, 4, 6], index=2, key="b_visits")
+    b_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=3, key="b_years")
+    b_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 40, key="b_conv")
+
+# --- Calculation ---
+if st.button("Beregn livstidsværdi"):
+    d_result = calc_clv(d_price, d_prod, d_visits, d_years, d_new, d_conv)
+    m_result = calc_clv(m_price, m_prod, m_visits, m_years, m_new, m_conv)
+    b_result = calc_clv(b_price, b_prod, b_visits, b_years, b_new, b_conv)
+    avg_result = (d_result + m_result + b_result) / 3
+
+    st.subheader("📊 Resultater")
+    st.markdown(f"""
+    <div class='result'>💇‍♀️ Damekunder: {d_result:,.0f} kr.</div>
+    <div class='result'>💇‍♂️ Herrekunder: {m_result:,.0f} kr.</div>
+    <div class='result'>🧒 Børnekunder: {b_result:,.0f} kr.</div>
+    <div class='result' style='background-color:#bca7f5;'>📈 Gennemsnitlig livstidsværdi: {avg_result:,.0f} kr.</div>
+    """, unsafe_allow_html=True)
+
+# --- CTA Section ---
+st.markdown("---")
+st.subheader("Ønsker du flere loyale kunder – uden at miste overblikket?")
+st.markdown("""
+Denne beregner er skabt for at hjælpe frisører med at forstå, **hvor vigtig en enkelt kunde egentlig er** – og hvorfor løbende nye kunder er nøglen til vækst.
+
+Jeg hjælper frisører, som ofte har mistet tilliden til deres bureau, med at skabe en **forretning med klarhed, frihed og en ordentlig løn**.
+
+Med 16 års erfaring i marketing og som tidligere partner i en frisørsalon, hjælper jeg dig med at få **ro i maven og styr på din salon**.
+
+👉 [**Book 20 min. gratis sparring**](https://www.klary.dk)  
+🔗 [**Besøg min LinkedIn-profil**](https://www.linkedin.com/in/michael-christensen-dk/)  
+📞 [**Ring nu: 28 10 96 68**](tel:+4528109668)
+""")
+
+# --- Footer ---
+st.markdown("""
+<footer>
+Powered by <a href="https://www.klary.dk" target="_blank">Klary.dk</a> – Uvildig marketingrådgivning
+</footer>
+""", unsafe_allow_html=True)
+
+# --- Sticky CTA (mobil only) ---
+st.markdown("""
+<div class="sticky-cta">
+  <a href="https://www.klary.dk" target="_blank">📅 Book sparring</a>
+  <a href="tel:+4528109668">📞 Ring nu</a>
+</div>
+""", unsafe_allow_html=True)
