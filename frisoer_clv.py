@@ -77,7 +77,7 @@ def calc_clv(price, product, visits, years, new_customers, conversion):
 # --- Input sections ---
 st.header("💰 Damekunder")
 with st.container():
-    d_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="d_new")
+    d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new")
     d_price = st.number_input("Gennemsnitlig pris pr. besøg (inkl. farve/klip)", min_value=0, value=650, step=50, key="d_price")
     d_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=75, step=5, key="d_prod")
     d_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits")
@@ -86,7 +86,7 @@ with st.container():
 
 st.header("💇‍♂️ Herrekunder")
 with st.container():
-    m_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="m_new")
+    m_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="m_new")
     m_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=400, step=25, key="m_price")
     m_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=50, step=5, key="m_prod")
     m_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=3, key="m_visits")
@@ -95,7 +95,7 @@ with st.container():
 
 st.header("🧒 Børnekunder")
 with st.container():
-    b_new = st.number_input("Antal nye kunder", min_value=0, value=10, step=1, key="b_new")
+    b_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="b_new")
     b_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=300, step=25, key="b_price")
     b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=25, step=5, key="b_prod")
     b_visits = st.selectbox("Besøg pr. år", [1, 2, 3, 4, 6], index=2, key="b_visits")
@@ -146,3 +146,4 @@ st.markdown("""
   <a href="tel:+4528109668">📞 Ring nu</a>
 </div>
 """, unsafe_allow_html=True)
+
