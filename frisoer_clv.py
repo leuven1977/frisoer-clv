@@ -82,7 +82,6 @@ with st.container():
     d_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=75, step=5, key="d_prod")
     d_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits")
     d_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=3, key="d_years")
-    d_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 50, key="d_conv")
 
 st.header("💇‍♂️ Herrekunder")
 with st.container():
@@ -91,7 +90,6 @@ with st.container():
     m_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=50, step=5, key="m_prod")
     m_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=3, key="m_visits")
     m_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=2, key="m_years")
-    m_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 60, key="m_conv")
 
 st.header("🧒 Børnekunder")
 with st.container():
@@ -100,7 +98,6 @@ with st.container():
     b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=25, step=5, key="b_prod")
     b_visits = st.selectbox("Besøg pr. år", [1, 2, 3, 4, 6], index=2, key="b_visits")
     b_years = st.selectbox("Antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=3, key="b_years")
-    b_conv = st.slider("Andel der bliver faste kunder (%)", 0, 100, 40, key="b_conv")
 
 # --- Calculation ---
 if st.button("Beregn livstidsværdi"):
@@ -148,5 +145,6 @@ st.markdown("""
   <a href="tel:+4528109668">📞 Ring nu</a>
 </div>
 """, unsafe_allow_html=True)
+
 
 
