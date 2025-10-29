@@ -40,7 +40,7 @@ st.header("💰 Damekunder")
 with st.container():
     d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new")
     d_price = st.number_input("Gennemsnitlig pris pr. klipning", min_value=0, value=650, step=50, key="d_price")
-    d_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=10, key="d_prod")
+    d_prod = st.number_input("Gennemsnitligt Produktsalg pr. dame", min_value=0, value=0, step=10, key="d_prod")
 
     st.subheader("Farve og striber")
     d_color_price = st.number_input("Gennemsnitlig pris for farve/striber", min_value=0, value=0, step=50, key="d_color_price")
@@ -109,3 +109,4 @@ Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en fo
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
