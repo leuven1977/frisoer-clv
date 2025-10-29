@@ -24,7 +24,7 @@ with st.container():
     d_new = st.number_input("Antal nye damekunder", min_value=0, value=1, step=1, key="d_new_v5")
 
     d_price = st.number_input("Gennemsnitlig pris pr. klip (uden farve)", min_value=0, value=650, step=50, key="d_price_v5")
-    d_color_price = st.number_input("Ekstra pris ved farve/striber", min_value=0, value=500, step=50, key="d_color_price_v5")
+    d_color_price = st.number_input("Ekstra pris ved farve/striber", min_value=0, value=800, step=50, key="d_color_price_v5")
 
     d_color_share = st.selectbox("Hvor mange af dine damekunder (%) får også farvebehandling?",
                                  [0, 20, 40, 60, 80, 100], index=2, key="d_color_share_v5")
@@ -113,6 +113,7 @@ Jeg hjælper **frisører, der vil have styr på deres forretning, økonomi og fr
 
 st.divider()
 st.caption("© 2025 Klary.dk – Uvildig rådgivning for selvstændige frisører.")
+
 
 
 
