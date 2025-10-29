@@ -39,11 +39,11 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
 st.header("💰 Damekunder")
 with st.container():
     d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new")
-    d_price = st.number_input("Pris dameklip", min_value=0, value=650, step=50, key="d_price")
+    d_price = st.number_input("Pris dameklip", min_value=0, value=550, step=50, key="d_price")
     d_prod = st.number_input("Gns. Produktsalg dame", min_value=0, value=0, step=10, key="d_prod")
 
     st.subheader("Farve og striber")
-    d_color_price = st.number_input("Gns. pris for farve/striber", min_value=0, value=0, step=50, key="d_color_price")
+    d_color_price = st.number_input("Gns. pris for farve/striber", min_value=0, value=800, step=50, key="d_color_price")
     d_color_share = st.selectbox("Hvor mange af dine damekunder får farve eller striber?", ["Ingen", "Hver 2. kunde", "Hver 3. kunde", "Hver 4. kunde", "Hver 5. kunde"], index=0, key="d_color_share")
     d_color_freq = st.selectbox("Hvor ofte får dine farvekunder i gns. farve/striber?", ["Ingen", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"], index=0, key="d_color_freq")
 
@@ -109,5 +109,6 @@ Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en fo
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
