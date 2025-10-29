@@ -87,32 +87,46 @@ with st.container():
             st.caption(f"(Beregnet ud fra {d_color_share_text.lower()} og farve hver {d_color_freq.lower()})")
 
 
-# --- Herrekunder ---
+# --- Input: Herrekunder ---
 st.header("💇‍♂️ Herrekunder")
 with st.container():
-    m_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="m_new")
-    m_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=300, step=25, key="m_price")
-    m_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=5, key="m_prod")  # default 0
-    m_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=3, key="m_visits")
-    m_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="m_years")  # default 5
+    h_new = st.number_input("Antal nye herrekunder", min_value=0, value=1, step=1, key="h_new_v8")
 
-    if st.button("Beregn herrekundeværdi", key="m_calc"):
-        m_total = m_new * ((m_price + m_prod) * m_visits * m_years)
-        st.success(f"💇‍♂️ Estimeret livstidsværdi for herrekunder: {int(m_total):,} kr.".replace(",", "."))
+    h_price = st.number_input("Gennemsnitlig pris pr. klip", min_value=0, value=400, step=25, key="h_price_v8")
+    h_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=5, key="h_prod_v8")
+    h_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="h_visits_v8")
+    h_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="h_years_v8")
+
+    # Beregning
+    h_value_per_customer = (h_price + h_prod) * h_visits * h_years
+    h_total = h_new * h_value_per_customer
+
+    # Beregningsknap
+    if st.button("💰 Beregn herreværdi", key="calc_h_v8"):
+        st.info(f"Værdi pr. herrekunde (gennemsnit): **{h_value_per_customer:,.0f} kr.**".replace(",", "."))
+        st.success(f"Samlet livstidsværdi for herrekunder: **{h_total:,.0f} kr.**".replace(",", "."))
 
 
-# --- Børnekunder ---
+
+# --- Input: Børnekunder ---
 st.header("🧒 Børnekunder")
 with st.container():
-    b_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="b_new")
-    b_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=250, step=25, key="b_price")
-    b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=5, key="b_prod")  # default 0
-    b_visits = st.selectbox("Besøg pr. år", [1, 2, 3, 4, 6], index=1, key="b_visits")
-    b_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="b_years")  # default 5
+    b_new = st.number_input("Antal nye børnekunder", min_value=0, value=1, step=1, key="b_new_v8")
 
-    if st.button("Beregn børnekundeværdi", key="b_calc"):
-        b_total = b_new * ((b_price + b_prod) * b_visits * b_years)
-        st.success(f"🧒 Estimeret livstidsværdi for børnekunder: {int(b_total):,} kr.".replace(",", "."))
+    b_price = st.number_input("Gennemsnitlig pris pr. klip", min_value=0, value=300, step=25, key="b_price_v8")
+    b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=5, key="b_prod_v8")
+    b_visits = st.selectbox("Besøg pr. år", [2, 3, 4, 6, 8], index=1, key="b_visits_v8")
+    b_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="b_years_v8")
+
+    # Beregning
+    b_value_per_customer = (b_price + b_prod) * b_visits * b_years
+    b_total = b_new * b_value_per_customer
+
+    # Beregningsknap
+    if st.button("💰 Beregn børneværdi", key="calc_b_v8"):
+        st.info(f"Værdi pr. børnekunde (gennemsnit): **{b_value_per_customer:,.0f} kr.**".replace(",", "."))
+        st.success(f"Samlet livstidsværdi for børnekunder: **{b_total:,.0f} kr.**".replace(",", "."))
+
 
 st.divider()
 
@@ -143,6 +157,7 @@ Jeg hjælper **frisører, der vil have styr på deres forretning, økonomi og fr
 
 st.divider()
 st.caption("© 2025 Klary.dk – Uvildig rådgivning for selvstændige frisører.")
+
 
 
 
