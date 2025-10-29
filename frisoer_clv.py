@@ -39,16 +39,16 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
 st.header("💰 Damekunder")
 with st.container():
     d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new")
-    d_price = st.number_input("Gennemsnitlig pris pr. klipning", min_value=0, value=650, step=50, key="d_price")
-    d_prod = st.number_input("Gennemsnitligt Produktsalg pr. dame", min_value=0, value=0, step=10, key="d_prod")
+    d_price = st.number_input("Pris dameklip", min_value=0, value=650, step=50, key="d_price")
+    d_prod = st.number_input("Gns. Produktsalg dame", min_value=0, value=0, step=10, key="d_prod")
 
     st.subheader("Farve og striber")
-    d_color_price = st.number_input("Gennemsnitlig pris for farve/striber", min_value=0, value=0, step=50, key="d_color_price")
+    d_color_price = st.number_input("Gns. pris for farve/striber", min_value=0, value=0, step=50, key="d_color_price")
     d_color_share = st.selectbox("Hvor mange af dine damekunder får farve eller striber?", ["Ingen", "Hver 2. kunde", "Hver 3. kunde", "Hver 4. kunde", "Hver 5. kunde"], index=0, key="d_color_share")
-    d_color_freq = st.selectbox("Hvor ofte får dine farvekunder i gennemsnit farve/striber?", ["Ingen", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"], index=0, key="d_color_freq")
+    d_color_freq = st.selectbox("Hvor ofte får dine farvekunder i gns. farve/striber?", ["Ingen", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"], index=0, key="d_color_freq")
 
-    d_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits")
-    d_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="d_years")
+    d_visits = st.selectbox("Gns. besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits")
+    d_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="d_years")
 
 share_map = {"Ingen": 0, "Hver 2. kunde": 50, "Hver 3. kunde": 33, "Hver 4. kunde": 25, "Hver 5. kunde": 20}
 color_share_value = share_map[d_color_share]
@@ -64,10 +64,10 @@ st.divider()
 st.header("💈 Herrekunder")
 with st.container():
     m_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="m_new")
-    m_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=350, step=25, key="m_price")
-    m_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=10, key="m_prod")
-    m_visits = st.selectbox("Besøg pr. år", [4,6,8,10,12], index=2, key="m_visits")
-    m_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="m_years")
+    m_price = st.number_input("Pris herreklip", min_value=0, value=350, step=25, key="m_price")
+    m_prod = st.number_input("Gns. Produktsalg herre", min_value=0, value=0, step=10, key="m_prod")
+    m_visits = st.selectbox("Gns. besøg pr. år", [4,6,8,10,12], index=2, key="m_visits")
+    m_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="m_years")
 
 m_clv_per, m_total = calc_clv(m_new, m_price, m_prod, m_visits, m_years, 0, 0, "Ingen", include_color=False)
 
@@ -80,10 +80,10 @@ st.divider()
 st.header("🧒 Børnekunder")
 with st.container():
     b_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="b_new")
-    b_price = st.number_input("Gennemsnitlig pris pr. besøg", min_value=0, value=250, step=25, key="b_price")
-    b_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=10, key="b_prod")
-    b_visits = st.selectbox("Besøg pr. år", [1,2,3,4,5,6,8,10], index=2, key="b_visits")
-    b_years = st.selectbox("Gennemsnitligt antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="b_years")
+    b_price = st.number_input("Pris børneklip", min_value=0, value=250, step=25, key="b_price")
+    b_prod = st.number_input("Gns. produktsalg barn", min_value=0, value=0, step=10, key="b_prod")
+    b_visits = st.selectbox("Gns. besøg pr. år", [1,2,3,4,5,6,8,10], index=2, key="b_visits")
+    b_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="b_years")
 
 b_clv_per, b_total = calc_clv(b_new, b_price, b_prod, b_visits, b_years, 0, 0, "Ingen", include_color=False)
 
@@ -109,4 +109,5 @@ Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en fo
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
