@@ -35,7 +35,7 @@ with st.container():
 
     d_prod = st.number_input("Produktsalg pr. besøg", min_value=0, value=0, step=5, key="d_prod_v5")
 
-    d_visits = st.selectbox("Besøg pr. år", [4, 6, 8, 10, 12], index=2, key="d_visits_v5")
+    d_visits = st.selectbox("Besøg pr. år", [2, 4, 6, 8, 10, 12], index=2, key="d_visits_v5")
 
     d_years = st.selectbox("Gennemsnitligt antal år som kunde", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=4, key="d_years_v5")
 
@@ -113,6 +113,7 @@ Jeg hjælper **frisører, der vil have styr på deres forretning, økonomi og fr
 
 st.divider()
 st.caption("© 2025 Klary.dk – Uvildig rådgivning for selvstændige frisører.")
+
 
 
 
