@@ -1,3 +1,8 @@
+import streamlit as st
+
+# --- Input sections ---
+st.header("💇‍♀️ Damekunder")
+...
 # --- Input sections ---
 
 st.header("💇‍♀️ Damekunder")
@@ -44,3 +49,4 @@ with st.container():
     if st.button("Beregn børnekundeværdi", key="b_calc"):
         b_total = b_new * ((b_price + b_prod) * b_visits * b_years)
         st.success(f"🧒 Estimeret livstidsværdi for børnekunder: {int(b_total):,} kr.".replace(",", "."))
+
