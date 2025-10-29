@@ -1,10 +1,23 @@
 import streamlit as st
 
-# --- Input sections ---
-st.header("💇‍♀️ Damekunder")
-...
-# --- Input sections ---
+st.set_page_config(page_title="Kundeværdi-beregner for frisører", page_icon="💇‍♀️", layout="centered")
 
+# --- Toptekst ---
+st.title("💇‍♀️ Hvad er en ny kunde egentlig værd for din salon?")
+st.markdown("""
+Denne beregner er skabt for at vise frisører, **hvor vigtig en enkelt kunde egentlig er** – 
+og hvorfor løbende nye kunder er nøglen til vækst.
+
+Jeg hjælper **selvstændige frisører** med at skabe vækst og overskud i hverdagen – 
+**med mere frihed, bedre løn og ro i maven.**
+
+Med **16 års erfaring i marketing** og som **tidligere partner i en frisørsalon**, 
+hjælper jeg dig med at få **styr på kunder, strategi og forretning.**
+""")
+
+st.divider()
+
+# --- Damekunder ---
 st.header("💇‍♀️ Damekunder")
 with st.container():
     d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new")
@@ -18,13 +31,14 @@ with st.container():
     d_years = st.selectbox("Antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=3, key="d_years")
 
     if st.button("Beregn damekundeværdi", key="d_calc"):
-        # beregn frekvensfaktor for farve/striber
         freq_map = {"Hver gang": 1.0, "Hver 2. gang": 0.5, "Hver 3. gang": 1/3, "Hver 4. gang": 0.25, "Aldrig": 0.0}
         color_factor = freq_map[d_color_freq]
         d_total = d_new * ((d_price + (d_color * color_factor) + d_prod) * d_visits * d_years)
         st.success(f"💇‍♀️ Estimeret livstidsværdi for damekunder: {int(d_total):,} kr.".replace(",", "."))
 
+st.divider()
 
+# --- Herrekunder ---
 st.header("💇‍♂️ Herrekunder")
 with st.container():
     m_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="m_new")
@@ -37,7 +51,9 @@ with st.container():
         m_total = m_new * ((m_price + m_prod) * m_visits * m_years)
         st.success(f"💇‍♂️ Estimeret livstidsværdi for herrekunder: {int(m_total):,} kr.".replace(",", "."))
 
+st.divider()
 
+# --- Børnekunder ---
 st.header("🧒 Børnekunder")
 with st.container():
     b_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="b_new")
@@ -50,3 +66,32 @@ with st.container():
         b_total = b_new * ((b_price + b_prod) * b_visits * b_years)
         st.success(f"🧒 Estimeret livstidsværdi for børnekunder: {int(b_total):,} kr.".replace(",", "."))
 
+st.divider()
+
+# --- Samlet beregning ---
+st.header("📊 Samlet beregning")
+if st.button("Vis samlet potentiale", key="total_calc"):
+    try:
+        total = d_total + m_total + b_total
+        st.success(f"💰 Samlet estimeret livstidsværdi: {int(total):,} kr.".replace(",", "."))
+    except NameError:
+        st.warning("Beregn først værdien for alle tre kundetyper for at se totalen.")
+
+st.divider()
+
+# --- CTA sektion ---
+st.markdown("""
+### 💬 Ønsker du flere loyale kunder – uden at miste overblikket?
+
+Beregneren er skabt for at hjælpe frisører med at forstå, hvor meget en kunde egentlig er værd – 
+og hvorfor løbende nye kunder er nøglen til vækst.
+
+Jeg hjælper **frisører, der vil have styr på deres forretning, økonomi og frihed.**
+
+👉 [Book et gratis møde på Klary.dk](https://www.klary.dk)  
+🔗 [Besøg min LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)  
+📞 Ring direkte på **28 10 96 68**
+""")
+
+st.divider()
+st.caption("© 2025 Klary.dk – Uvildig rådgivning for selvstændige frisører.")
