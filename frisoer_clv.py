@@ -21,58 +21,68 @@ st.divider()
 st.header("💇‍♀️ Damekunder")
 
 with st.container():
-    d_new = st.number_input("Antal nye kunder", min_value=0, value=1, step=1, key="d_new_v3")
-
-    # Hvor ofte får kunden farve/striber
-    d_color_freq = st.selectbox(
-        "Hvor ofte får kunden farve/striber?",
-        ["Hver gang", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Aldrig"],
-        index=4, key="d_color_freq_v3"
+    # Antal nye kunder
+    d_new = st.number_input(
+        "Antal nye damekunder",
+        min_value=0, value=1, step=1, key="d_new_v5"
     )
 
-    # Vis kun procentfeltet, hvis der vælges andet end "Aldrig"
-    if d_color_freq != "Aldrig":
-        d_color_share = st.slider(
-            "Hvor mange % af damekunderne får farve/striber?",
-            min_value=0, max_value=100, value=40, step=5, key="d_color_share_v3"
-        )
-    else:
-        d_color_share = 0  # Ingen får farve
-
+    # Gennemsnitlig pris pr. besøg (klip uden farve)
     d_price = st.number_input(
-        "Gennemsnitlig pris pr. besøg (klip uden farve)", 
-        min_value=0, value=650, step=50, key="d_price_v3"
+        "Gennemsnitlig pris pr. klip (uden farve)",
+        min_value=0, value=650, step=50, key="d_price_v5"
     )
 
+    # Ekstra pris ved farve/striber
     d_color_price = st.number_input(
-        "Ekstra pris ved farve/striber", 
-        min_value=0, value=500, step=50, key="d_color_price_v3"
+        "Ekstra pris ved farve/striber",
+        min_value=0, value=500, step=50, key="d_color_price_v5"
     )
 
+    # Hvor mange får farve
+    d_color_share = st.selectbox(
+        "Hvor mange af dine damekunder (%) får også farvebehandling?",
+        [0, 20, 40, 60, 80, 100],
+        index=2,  # 40%
+        key="d_color_share_v5"
+    )
+
+    # Hvor ofte får de farve
+    d_color_freq = st.selectbox(
+        "Hvor ofte får dine farvekunder i gennemsnit lavet farve eller striber?",
+        ["Hver gang", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang"],
+        index=1,
+        key="d_color_freq_v5"
+    )
+
+    # Produktsalg pr. besøg
     d_prod = st.number_input(
-        "Produktsalg pr. besøg", 
-        min_value=0, value=0, step=5, key="d_prod_v3"
+        "Produktsalg pr. besøg",
+        min_value=0, value=0, step=5, key="d_prod_v5"
     )
 
+    # Besøg pr. år
     d_visits = st.selectbox(
-        "Besøg pr. år", 
-        [4, 6, 8, 10, 12], 
-        index=2, key="d_visits_v3"
+        "Besøg pr. år",
+        [4, 6, 8, 10, 12],
+        index=2,
+        key="d_visits_v5"
     )
 
+    # Antal år som kunde
     d_years = st.selectbox(
         "Gennemsnitligt antal år som kunde",
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        index=4, key="d_years_v3"
+        index=4,
+        key="d_years_v5"
     )
 
-    # Beregning
+    # --- Beregning ---
     freq_map = {
         "Hver gang": 1.0,
         "Hver 2. gang": 0.5,
         "Hver 3. gang": 1/3,
-        "Hver 4. gang": 0.25,
-        "Aldrig": 0.0
+        "Hver 4. gang": 0.25
     }
 
     color_factor = freq_map[d_color_freq] * (d_color_share / 100)
@@ -81,7 +91,8 @@ with st.container():
         ((d_price + (d_color_price * color_factor) + d_prod) * d_visits * d_years)
     )
 
-    st.markdown(f"**Samlet værdi af damekunder:** {d_total:,.0f} kr.")
+    st.markdown(f"**Samlet livstidsværdi for damekunder:** {d_total:,.0f} kr.")
+
 
 
 
@@ -141,6 +152,7 @@ Jeg hjælper **frisører, der vil have styr på deres forretning, økonomi og fr
 
 st.divider()
 st.caption("© 2025 Klary.dk – Uvildig rådgivning for selvstændige frisører.")
+
 
 
 
