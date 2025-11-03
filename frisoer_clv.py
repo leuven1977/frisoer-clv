@@ -3,13 +3,11 @@ import streamlit as st
 st.set_page_config(page_title="Kundeværdi-beregner for frisører", layout="centered")
 
 # --- TOP TEKST ---
-st.title("💇‍♀️ Find ud af, hvad én kunde faktisk er værd for din salon")  
+st.title("💇‍♀️ Hvad er én kunde værd for din salon?")  
 st.write("""
-**Tidligere salonejer – nu uvildig rådgiver for frisører.**  
-Denne beregner viser, **hvorfor nye kunder er nøglen til vækst og frihed.**  
+**Jeg er uvildig og uafhængig rådgiver for frisører.**  
 
-👉 **Regel #1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
-Book et gratis møde – så forklarer jeg dig hvorfor.  
+👉 Jeg hjælper med at skabe frihed og vækst til selvstændige frisører.
 
 Leg lidt med beregneren. De fleste får en *wow*-oplevelse.  
 """)
@@ -103,14 +101,20 @@ st.divider()
 
 # --- BUNDSEKTION ---
 st.write("""
-### 🧭 Ønsker du flere loyale kunder – uden at miste overblikket?
-Beregneren er skabt udelukkende for at hjælpe frisører med at få øjnene op for, hvor vigtig kundeloyalitet er for vækst.  
-Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en forretning med **fokus på strategi, vækst og frihed**.
+### 🧭 Ønsker du frihed og vækst?
+
+Jeg er tidligere salonejer, har 16 års erfaring med digital marketing og 3 års erfaring med AI.
+
+I dag hjælper jeg selvstændige frisører, der har mistet tilliden til bureauer.
+
+**Min regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
+Book et gratis møde – så forklarer jeg dig hvorfor. 
 
 👉 **Book et gratis møde på [Klary.dk](https://www.klary.dk)**  
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
