@@ -103,12 +103,15 @@ st.divider()
 st.write("""
 ### 🧭 Ønsker du frihed og vækst?
 
-Jeg er tidligere salonejer, har 16 års erfaring med digital marketing og 3 års erfaring med AI.
+Jeg har været selvstændig i 14 år, med 16 års erfaring i digital marketing og 3 år med AI og jeg ved, hvad der skal til for at skabe en sund og profitable salon. 
 
-I dag hjælper jeg selvstændige frisører, der har mistet tilliden til bureauer.
+I dag hjælper jeg frisører, der er dygtige til deres håndværk, men ofte står alene med beslutninger, de ikke er klædt på til at tage.  
+Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets interesser kommer før deres egne.
 
-**Min regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
-Book et gratis møde – så forklarer jeg dig hvorfor. 
+**Min regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.
+   
+Book et gratis møde – så forklarer jeg dig hvorfor.  
+""")
 
 👉 **Book et gratis møde på [Klary.dk](https://www.klary.dk)**  
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
