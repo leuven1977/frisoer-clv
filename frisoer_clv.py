@@ -5,7 +5,7 @@ st.set_page_config(page_title="Kundeværdi-beregner for frisører", layout="cent
 # --- TOP TEKST ---
 st.title("💇‍♀️ Hvad er én kunde værd for din salon?")  
 st.write("""
-Hvor meget en kunde er værd **er et af de vigtigste tal, du skal kende som selvstændig**
+Hvor meget en kunde er værd, **er et af de vigtigste tal, du skal kende som selvstændig**
 
 Udfyld de tal der bliver efterspurgt, mange får en "aha" oplevelse, da de ikke tænker over, hvor meget én kunde egentlig er værd for salonen.  
 """)
@@ -112,6 +112,7 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
