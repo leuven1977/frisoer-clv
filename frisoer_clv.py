@@ -111,7 +111,10 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 **Min regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
 
 👉 **Book et gratis møde på [Klary.dk](https://www.klary.dk)**  
+🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
+📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
