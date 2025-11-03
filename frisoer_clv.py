@@ -18,7 +18,7 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
         return 0, 0
 
     color_add = 0
-    if include_color and new_customers > 1 and color_price > 0 and color_freq != "Ingen":
+    if include_color and new_customers > 3 and color_price > 0 and color_freq != "Ingen":
         freq_map = {
             "Hver 2. gang": 0.5,
             "Hver 3. gang": 1/3,
@@ -112,6 +112,7 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
