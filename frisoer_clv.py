@@ -42,7 +42,7 @@ with st.container():
 
     st.subheader("Farve og striber")
     d_color_price = st.number_input("Gns. pris for farve/striber", min_value=0, value=800, step=50, key="d_color_price")
-    d_color_share = st.selectbox("Hvor mange af dine damekunder får farve eller striber?", ["Ingen", "Hver 2. kunde", "Hver 3. kunde", "Hver 4. kunde", "Hver 5. kunde"], index=0, key="d_color_share")
+    d_color_share = st.selectbox("Hvor mange af dine damekunder får farve eller striber?", ["Ingen", "Hver 2. damekunde", "Hver 3. damekunde", "Hver 4. damekunde", "Hver 5. damekunde"], index=0, key="d_color_share")
     d_color_freq = st.selectbox("Hvor ofte får dine farvekunder i gns. farve/striber?", ["Ingen", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"], index=0, key="d_color_freq")
 
     d_visits = st.selectbox("Gns. besøg pr. år", [2, 4, 6, 8, 10, 12], index=2, key="d_visits")
@@ -112,6 +112,7 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
