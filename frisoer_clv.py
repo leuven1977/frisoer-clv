@@ -108,12 +108,13 @@ Jeg har været selvstændig i 14 år, med 16 års erfaring i digital marketing o
 I dag hjælper jeg frisører, der er dygtige til deres håndværk, men ofte står alene med beslutninger, de ikke er klædt på til at tage.  
 Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets interesser kommer før deres egne.  
 
-**Min regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
+**Regel nr. 1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
 
 👉 **Book et gratis møde på [Klary.dk](https://www.klary.dk)**  
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
