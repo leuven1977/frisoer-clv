@@ -9,7 +9,7 @@ st.write("""
 
 👉 Jeg hjælper med at skabe frihed og vækst til selvstændige frisører.
 
-Leg lidt med beregneren. De fleste får en *wow*-oplevelse.  
+Leg lidt med beregneren. Mange får en "wow" oplevelse, da de ikke vidste, hvor høje tal vi taler om.  
 """)
 
 st.divider()
@@ -114,6 +114,7 @@ Book et gratis møde – så forklarer jeg dig hvorfor.
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
