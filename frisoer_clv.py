@@ -3,13 +3,15 @@ import streamlit as st
 st.set_page_config(page_title="Kundeværdi-beregner for frisører", layout="centered")
 
 # --- TOP TEKST ---
-st.title("💇‍♀️ Hvad er en ny kunde egentlig værd for din salon?")
+st.title("Find ud af, hvad én kunde faktisk er værd for din salon")  
 st.write("""
-Denne beregner viser, **hvor meget en enkelt kunde er værd for din salon** – og hvorfor løbende nye kunder er nøglen til vækst.
+**Tidligere salonejer – nu uvildig rådgiver for frisører.**  
+Beregner viser, **hvorfor nye kunder er nøglen til vækst og frihed.**  
 
-Jeg hjælper selvstændige frisører med at skabe vækst og få **en hverdag med mere frihed og en bedre løn.**
+👉 **Regel #1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
+Book et gratis møde – så forklarer jeg dig hvorfor.  
 
-Med 16 års erfaring i marketing og som tidligere partner i en frisørsalon, hjælper jeg dig med at få **ro i maven og styr på forretningen.**
+Leg lidt med beregneren. De fleste får en *wow*-oplevelse.   
 """)
 
 st.divider()
@@ -109,6 +111,7 @@ Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en fo
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
