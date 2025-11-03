@@ -6,7 +6,7 @@ st.set_page_config(page_title="Kundeværdi-beregner for frisører", layout="cent
 st.title("Find ud af, hvad én kunde faktisk er værd for din salon")  
 st.write("""
 **Tidligere salonejer – nu uvildig rådgiver for frisører.**  
-Beregner viser, **hvorfor nye kunder er nøglen til vækst og frihed.**  
+Beregneren viser, **hvorfor nye kunder er nøglen til vækst og frihed.**  
 
 👉 **Regel #1:** Indgå aldrig et samarbejde med et bureau, hvis du ikke selv forstår marketing.  
 Book et gratis møde – så forklarer jeg dig hvorfor.  
@@ -111,6 +111,7 @@ Jeg hjælper frisører, der har mistet tilliden til bureauer, med at skabe en fo
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
