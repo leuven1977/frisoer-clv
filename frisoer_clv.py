@@ -37,7 +37,7 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
 st.header("💰 Damekunder")
 with st.container():
     d_new = st.number_input("Vælg antal nye damekunder du vil beregne", min_value=0, value=1, step=1, key="d_new")
-    d_price = st.number_input("Pris dameklip", min_value=0, value=550, step=50, key="d_price")
+    d_price = st.number_input("Gns. pris for dameklip i din salon", min_value=0, value=550, step=50, key="d_price")
     d_prod = st.number_input("Gns. Produktsalg pr. dame", min_value=0, value=0, step=10, key="d_prod")
 
     st.subheader("Farve og striber")
@@ -62,7 +62,7 @@ st.divider()
 st.header("💈 Herrekunder")
 with st.container():
     m_new = st.number_input("Vælg antal nye herrekunder du vil beregne", min_value=0, value=1, step=1, key="m_new")
-    m_price = st.number_input("Pris herreklip", min_value=0, value=350, step=25, key="m_price")
+    m_price = st.number_input("Gns. pris for herreklip i din salon", min_value=0, value=350, step=25, key="m_price")
     m_prod = st.number_input("Gns. Produktsalg pr. herre", min_value=0, value=0, step=10, key="m_prod")
     m_visits = st.selectbox("Gns. besøg pr. år", [4,6,8,10,12], index=2, key="m_visits")
     m_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="m_years")
@@ -78,7 +78,7 @@ st.divider()
 st.header("🧒 Børnekunder")
 with st.container():
     b_new = st.number_input("Vælg antal nye børneklip du vil beregne", min_value=0, value=1, step=1, key="b_new")
-    b_price = st.number_input("Pris børneklip", min_value=0, value=250, step=25, key="b_price")
+    b_price = st.number_input("Gns. pris for børneklip i din salon", min_value=0, value=250, step=25, key="b_price")
     b_prod = st.number_input("Gns. produktsalg pr. barn", min_value=0, value=0, step=10, key="b_prod")
     b_visits = st.selectbox("Gns. besøg pr. år", [1,2,3,4,5,6,8,10], index=2, key="b_visits")
     b_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="b_years")
@@ -112,6 +112,7 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 🔗 **Besøg min [LinkedIn-profil](https://www.linkedin.com/in/michael-christensen-dk/)**  
 📞 **Ring direkte på 28 10 96 68**
 """)
+
 
 
 
