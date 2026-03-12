@@ -30,12 +30,13 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
             "Hver 5. damekunde": 5
         }
 
-        freq_map = {
-            "Hver 2. gang": 0.5,
-            "Hver 3. gang": 1/3,
-            "Hver 4. gang": 0.25,
-            "Hver 5. gang": 0.2
-        }
+      freq_map = {
+    "Hver gang": 1,
+    "Hver 2. gang": 0.5,
+    "Hver 3. gang": 1/3,
+    "Hver 4. gang": 0.25,
+    "Hver 5. gang": 0.2
+}
 
         every_nth_customer = share_map.get(color_share_label)
         color_customers = new_customers // every_nth_customer if every_nth_customer else 0
@@ -64,14 +65,14 @@ with st.container():
         index=0,
         key="d_color_share"
     )
-    d_color_freq = st.selectbox(
-        "Hvor ofte får dine farvekunder i gns. farve/striber?",
-        ["Ingen", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"],
-        index=0,
-        key="d_color_freq"
-    )
+   d_color_freq = st.selectbox(
+    "Hvor ofte får dine farvekunder i gns. farve/striber?",
+    ["Ingen", "Hver gang", "Hver 2. gang", "Hver 3. gang", "Hver 4. gang", "Hver 5. gang"],
+    index=0,
+    key="d_color_freq"
+)
 
-    d_visits = st.selectbox("Gns. besøg pr. år", [2, 4, 6, 8, 10, 12], index=2, key="d_visits")
+   d_visits = st.selectbox("Gns. besøg pr. år", [1,2,3,4,5,6,7,8], index=2, key="d_visits")
     d_years = st.selectbox("Gns. antal år som kunde", [1,2,3,4,5,6,7,8,9,10], index=4, key="d_years")
 
 # ✅ Beregning
