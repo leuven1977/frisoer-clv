@@ -14,6 +14,7 @@ st.divider()
 
 # --- FUNKTION TIL BEREGNING ---
 def calc_clv(new_customers, price, products, visits, years, color_price, color_share_label, color_freq, include_color=True):
+
     if new_customers <= 0:
         return 0, 0
 
@@ -23,6 +24,7 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
     color_total = 0
 
     if include_color and color_price > 0 and color_share_label != "Ingen" and color_freq != "Ingen":
+
         share_map = {
             "Hver 2. damekunde": 2,
             "Hver 3. damekunde": 3,
@@ -30,16 +32,17 @@ def calc_clv(new_customers, price, products, visits, years, color_price, color_s
             "Hver 5. damekunde": 5
         }
 
-      freq_map = {
-    "Hver gang": 1,
-    "Hver 2. gang": 0.5,
-    "Hver 3. gang": 1/3,
-    "Hver 4. gang": 0.25,
-    "Hver 5. gang": 0.2
-}
+        freq_map = {
+            "Hver gang": 1,
+            "Hver 2. gang": 0.5,
+            "Hver 3. gang": 1/3,
+            "Hver 4. gang": 0.25,
+            "Hver 5. gang": 0.2
+        }
 
         every_nth_customer = share_map.get(color_share_label)
         color_customers = new_customers // every_nth_customer if every_nth_customer else 0
+
         color_treatments_per_year = visits * freq_map.get(color_freq, 0)
 
         color_total = color_customers * color_price * color_treatments_per_year * years
@@ -151,6 +154,7 @@ Mange har mistet tilliden til bureauer, fordi de har oplevet, at bureauets inter
 
 Jeg giver altid et gratis sparringsmøde.
 """)
+
 
 
 
